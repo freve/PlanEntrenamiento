@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+	
+	<div class="container">
+		
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Fecha Inicio</th>
+					<th scope="col">Fecha Fin</th>
+					<th scope="col">Observaciones</th>
+					<th scope="col">descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="cl:${planes}">
+					<th th:text="${cl.id_planentrenamiento}">></th>
+				    <th th:text="${cl.fechainicio}">></th>
+				    <th th:text="${cl.fechafin}">></th>
+				    <th th:text="${cl.observaciones}">></th>
+				    <th th:text="${cl.descripcion}">></th>
+										
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
