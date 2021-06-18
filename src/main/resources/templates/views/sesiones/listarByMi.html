@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+	<br>
+		<center><h2 th:text="${titulo}"></h2></center>
+	</div>
+
+	<div class="container">
+
+            <div class="panel-body">
+				<center><button class="btn btn-success" onclick="goBack()">Regresar</button></center>
+			</div>
+		<br>
+			<table class="table table-bordered">
+				<thead class="thead"  style="background-color:#58D68D;">
+					<tr>
+						<th scope="col"><center>Id</center></th>
+						<th scope="col"><center>Nombre</center></th>
+						<th scope="col"><center>Descripción</center></th>
+						<th scope="col"><center>Microciclo</center></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cl:${sesiones}">
+						<th th:text="${cl.id_sesionentrenamiento}"></th>
+						<th th:text="${cl.nombre}"></th>
+						<th th:text="${cl.descripcion}"></th>
+						<th th:text="${cl.microciclo.nombre}"></th>
+						
+					</tr>
+				</tbody>
+			</table>
+			
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+
+</html>

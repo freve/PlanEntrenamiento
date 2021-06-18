@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+<br>
+	<div class="container">
+		<center><h2 th:text="${titulo}"></h2></center>
+		
+	</div>
+	<div class="container">
+		<div class="panel-body">
+			<center><button class="btn btn-success" onclick="goBack()">Regresar</button></center>
+		</div>
+<br>
+		<table  class="table table-bordered" style="font-family: Arial;">
+			<thead  class="thead" style="background-color:#58D68D;">
+				<tr>
+					<th scope="col"><center>Id</center></th>
+					<th scope="col"><center>Fecha Inicio</center></th>
+					<th scope="col"><center>Fecha Fin</center></th>
+					<th scope="col"><center>Observaciones</center></th>
+					<th scope="col"><center>descripción</center></th>
+					<th scope="col"><center>Equipo</center></th>
+					
+
+				</tr>
+			</thead>
+			<tbody  style="font-size: 14px;">
+				<tr th:each="cl:${planes}">
+					<th th:text="${cl.planentrenamiento.id_planentrenamiento}">></th>
+					<th th:text="${cl.planentrenamiento.fechainicio}">></th>
+					<th th:text="${cl.planentrenamiento.fechafin}">></th>
+					<th th:text="${cl.planentrenamiento.observaciones}">></th>
+					<th th:text="${cl.planentrenamiento.descripcion}">></th>
+					<th th:text="${cl.equipo.nombre}">></th>
+				</tr>
+			</tbody>
+		</table>
+		
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+
+</html>

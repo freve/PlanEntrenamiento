@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<form th:object="${plan}" th:action="@{/planesentrenamiento/editar2/}+${idEquipo}" method="POST">
+
+					<div class="form-group row">
+						<input type="hidden" th:field="${plan.id_planentrenamiento}">
+					</div>
+
+
+					
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="fechainicio">Fecha Inicio:</label>
+						<input th:field="*{fechainicio}" type="text" class="form-control form-control-sm col-md-6"
+							id="fechainicio" placeholder="AAAA/MM/DD">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="fechafin">Fecha Fin:</label>
+						<input th:field="*{fechafin}" type="text" class="form-control form-control-sm col-md-6"
+							id="fechafin" placeholder="AAAA/MM/DD">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="observaciones">Observación:</label>
+						<input th:field="*{observaciones}" type="text" class="form-control form-control-sm col-md-6"
+							id="observaciones" placeholder="Observación">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="descripcion">Descripción:</label>
+						<input th:field="*{descripcion}" type="text" class="form-control form-control-sm col-md-6"
+							id="descripcion" placeholder="Descripción">
+
+					</div>
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar">
+					</div>
+
+				</form>
+				<div class="panel-body">
+					<button class="btn btn-success" onclick="goBack()">&laquo;Regresar</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+
+</html>

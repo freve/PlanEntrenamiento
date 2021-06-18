@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+	<br>
+		<center><h3 th:text="${titulo}"></h3></center>
+	</div>
+
+	<div class="container col-md-9">
+	  
+            <div class="panel-body">
+           <center><button class="btn btn-success" style="background-color: #229954;" onclick="goBack()">Volver</button>&nbsp;&nbsp;<a class="btn btn-primary" th:href="@{/microciclos/create/} + ${id_meso}" th:text="'Nuevo'"
+			title="Crear"></a></center>
+			<br>
+			
+		<table class="table table-bordered">
+			<thead class="thead" style="background-color:#58D68D;">
+				<tr>
+					<th scope="col"><center>Id</center></th>
+					<th scope="col"><center>Nombre</center></th>
+					<th scope="col"><center>Estado</center></th>
+					<th scope="col"><center>ID Mesociclo</center></th>
+					<th scope="col"><center>Acciones</center></th>			
+					<th scope="col"><center>Sesiones de entrenamiento</center></th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cl:${microciclos}">
+					<th th:text="${cl.id_microciclo}"></th>
+					<th th:text="${cl.nombre}"></th>
+					<th th:text="${cl.estadomicrociclo.descripcion}"></th>
+					<th th:text="${cl.mesociclo.id_mesociclo}"></th>
+					<th><a class="btn btn-danger btn-sm"
+								th:href="@{/microciclos/delete/} + ${cl.id_microciclo}" th:text="'Eliminar'"
+								title="Eliminar"></a>&nbsp;<a class="btn btn-warning btn-sm"
+								th:href="@{/microciclos/edit/} + ${cl.id_microciclo}" th:text="'Editar'"
+								title="Editar">
+					</th>
+					<th><a class="btn btn-success btn-sm"
+								th:href="@{/sesiones/mostrarByMi/} + ${cl.id_microciclo}" th:text="'Ver Sesiones'"
+								title="Sesiones"></a>
+					</th>
+					
+					
+					    
+				</tr>
+				
+			</tbody>
+		</table>
+    
+	</div>
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+
+</html>

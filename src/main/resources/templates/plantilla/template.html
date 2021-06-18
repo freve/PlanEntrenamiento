@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-<meta charset="UTF-8">
-<title>CRUD Clientes</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SIMPLAFUT</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/path/css/font-awesome.min.css}">
+
+
 </head>
 <body>
 
@@ -11,8 +15,8 @@
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
-				<a class="navbar-brand" href="#">
-					<strong>MyLogo</strong>
+				<a class="navbar-brand" th:href="@{/equipos/mostrar}">
+					<strong style="font-family: Arial;">SIMPLAFUT</strong>
 				</a>
 				
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -23,52 +27,51 @@
 				</button>
 				
 				<!-- ENLACES DEL MENU -->
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<center><div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active"><a class="nav-link" th:href="@{/index}">Inicio
+						<li class="nav-item"><a class="nav-link" th:href="@{/equipos/mostrar}">Lista de equipos
 								<span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link"th:href="@{/views/clientes/}">Clientes</a></li>
+						<li class="nav-item"><a class="nav-link"th:href="@{/planesentrenamiento/mostrar}">Listado de planes</a></li>
 					</ul>
-				</div>
+				</div></center>
 			</div>
-		</nav>
-		
-		<!-- MENSAJES -->
-		<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+		</nav>	
+				<!-- MENSAJES -->
+		<center><div class="alert alert-success alert-dismissible fade show" th:if="${success != null}">
 			<label th:text="${success}"></label>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
 		</div>
-		<div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+		<div class="alert alert-danger alert-dismissible fade show" th:if="${error != null}">
 			<label th:text="${error}"></label>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
 		</div>
-		<div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+		<div class="alert alert-warning alert-dismissible fade show" th:if="${warning != null}">
 			<label th:text="${warning}"></label>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
 		</div>
-		<div class="alert alert-info alert-dismissable" th:if="${info != null}">
+		<div class="alert alert-info alert-dismissible fade show" th:if="${info != null}">
 			<label th:text="${info}"></label>
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-		</div>
-		
-					
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+		</div><center>	
 	</header>
 
 	<!-- CONTENIDO -->
 	<div class="container"></div>
+	
 
 
 	<!-- PIE DE PAGINA -->
 	<footer th:fragment="footer" class="bg-dark text-center text-white fixed-bottom">
 
 		<div class="container">
-			<p>Copyright Javacode503 &copy; -2019</p>
+			<p>Copyright UFPS &copy; -2021</p>
 		</div>
 
 		<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+		
 
 	</footer>
 

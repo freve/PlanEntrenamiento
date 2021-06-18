@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+	<br>
+		<center><h3 th:text="${titulo}"></h3></center>
+	</div>
+
+	<div class="container col-md-11">
+		<div class="panel-body">
+			<center><button class="btn btn-success" style="background-color: #229954;" onclick="goBack()">Volver</button>&nbsp;&nbsp;<a class="btn btn-primary" th:href="@{/planesentrenamiento/create/}+${id_equipo}"
+			th:text="'Crear Nuevo Plan'" title="Crear Nuevo Plan" ></a></center>
+		</div>
+		<br>
+		<table class="table table-bordered" style="font-family: Arial;">
+			<thead class="thead" style="background-color:#58D68D;">
+				<tr>
+					<th scope="col"><center>Id</center></th>
+					<th scope="col"><center>Fecha Inicio</center></th>
+					<th scope="col"><center>Fecha Fin</center></th>
+					<th scope="col"><center>Observaciones</center></th>
+					<th scope="col"><center>descripción</center></th>
+					<th scope="col"><center>Accion</center></th>
+					<th scope="col"><center>Mesociclos</center></th>
+				</tr>
+			</thead>
+			<tbody  style="font-size: 14px; " >
+				<tr th:each="cl:${planes}">
+					<th th:text="${cl.id_planentrenamiento}">></th>
+					<th th:text="${cl.fechainicio}">></th>
+					<th th:text="${cl.fechafin}">></th>
+					<th th:text="${cl.observaciones}">></th>
+					<th th:text="${cl.descripcion}">></th>
+					<th><a class="btn btn-danger btn-sm"
+								th:href="@{/planesentrenamiento/delete/} + ${cl.id_planentrenamiento}" th:text="'Eliminar'"
+								title="Eliminar"></a>&nbsp;<a class="btn btn-warning btn-sm"
+								th:href="@{/planesentrenamiento/edit/} + ${cl.id_planentrenamiento}" th:text="'Editar'"
+								title="Editar"></a>
+					</th>
+					<th><a class="btn btn-success btn-sm" 
+							th:href="@{/mesociclos/mostrarByP/} + ${cl.id_planentrenamiento}" th:text="'Ver'"
+							title="Mesociclos"><i class="fas fa-fw fa-table"></i></a>&nbsp;<a class="btn btn-primary btn-sm" th:href="@{/mesociclos/create/}+${cl.id_planentrenamiento}"
+							th:text="'Nuevo'" title="Nuevo mesociclo">
+					</th>					
+				</tr>
+			</tbody>
+		</table>
+		
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+	<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})</script>
+</body>
+
+</html>

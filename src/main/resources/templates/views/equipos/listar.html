@@ -5,28 +5,35 @@
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 
-	<div class="container">		
-		<h1 th:text="${titulo}"></h1>		
+	<div class="container">	
+		<br>
+		<center><h2>Listado de equipos </h2></center>	
+		<br>
 	</div>
 	
-	<div class="container">
+	<div class="container col-md-9" >
+	
 		
-		
-		<table class="table">
-			<thead class="thead-dark">
+		<table class="table table-bordered">
+			<thead class="thead" style="background-color:#58D68D;">
 				<tr>
-					<th scope="col">Id</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Descripción</th>
+					<th scope="col"><center>Id</center></th>
+					<th scope="col"><center>Nombre</center></th>
+					<th scope="col"><center>Descripción</center></th>
+					<th scope="col"><center>Acciones</center></th>
 					
 				</tr>
 			</thead>
 			<tbody>
 			<tr th:each="cl:${equipos}">
-					<th th:text="${cl.id_equipo}">></th>
-					<th th:text="${cl.nombre}">></th>
-					<th th:text="${cl.descripcion}">></th>
-										
+					<th th:text="${cl.id_equipo}" style="font-size: 15px;"></th>
+					<th th:text="${cl.nombre}"style="font-size: 15px;"></th>
+					<th th:text="${cl.descripcion}"style="font-size: 15px;"></th>
+				    <th><a class="btn btn-success btn-sm" style="background-color: #229954;" th:href="@{/planesentrenamiento/mostrarByEq/} + ${cl.id_equipo}"
+							th:text="'Ver Planes'" title="planes">
+						</a>&nbsp;<a class="btn btn-primary btn-sm" th:href="@{/planesentrenamiento/create/}+${cl.id_equipo}"
+			th:text="'Crear Nuevo Plan'" title="Crear Nuevo Plan" >
+					</th>										
 				</tr>
 			</tbody>
 		</table>

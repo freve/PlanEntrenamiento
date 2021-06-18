@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="plantilla/template :: head">
 </head>
+
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 
-	<div class="container">		
-		<h1 th:text="${titulo}"></h1>		
-	</div>
-	
 	<div class="container">
-		
-		
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Id</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Descripción</th>
+	<br>
+		<center><h3 th:text="${titulo}"></h3></center>
+	</div>
+
+	<div class="container col-md-9">
+	<div class="panel-body">
+            <center><button class="btn btn-success" style="background-color: #229954;" onclick="goBack()">Volver</button>&nbsp;&nbsp;<a class="btn btn-primary" th:href="@{/mesociclos/create/}+${id_plan}"
+			th:text="'Crear Nuevo '" title="Crear Nuevo Mesociclo" ></a></center>
+			</div>    
+			<br>        
+			<table class="table table-bordered" style="font-family: Arial;">
+				<thead class="thead" style="background-color:#58D68D;">
+					<tr>
+						<th scope="col"><center>Id</center></th>
+						<th scope="col"><center>tipo</center></th>
+						<th scope="col"><center>Estado</center></th>
+						<th scope="col"><center>ID Plan</center></th>
+						<th scope="col"><center>Microciclos</center></th>
+						<th scope="col"><center>Acciones</center></th>
+					</tr>
+				</thead>
+				<tbody style="font-size: 14px;">
+					<tr th:each="cl:${mesociclos}">
+						<th th:text="${cl.id_mesociclo}">></th>
+						<th th:text="${cl.tipomesociclo.descripcion}">></th>
+						<th th:text="${cl.estadomesociclo.descripcion}">></th>
+						<th th:text="${cl.planEntrenamiento.id_planentrenamiento}">></th>
+						<th><a class="btn btn-success btn-sm"
+								th:href="@{/microciclos/mostrarByMe/} + ${cl.id_mesociclo}" th:text="'Ver'"
+								title="Microciclos"></a>&nbsp;<a class="btn btn-primary btn-sm" th:href="@{/microciclos/create/}+${cl.id_mesociclo}"
+								th:text="'Nuevo'" title="Crear Nuevo Microciclo">
+						</th>
 					
-				</tr>
-			</thead>
-			<tbody>
-			<tr th:each="cl:${equipos}">
-					<th th:text="${cl.id_equipo}">></th>
-					<th th:text="${cl.nombre}">></th>
-					<th th:text="${cl.descripcion}">></th>
-										
-				</tr>
-			</tbody>
-		</table>
+					    <th><a class="btn btn-danger btn-sm"
+								th:href="@{/mesociclos/delete/} + ${cl.id_mesociclo}" th:text="'Eliminar'"
+								title="Eliminar"></a>&nbsp;<a class="btn btn-warning btn-sm"
+								th:href="@{/mesociclos/edit/} + ${cl.id_mesociclo}" th:text="'Editar'"
+								title="Editar">
+					    </th>				    
+					</tr>
+					
 
+					</a>
 
+					</tr>
+				</tbody>
+			</table>
+			
+		
 	</div>
 
 	<footer th:replace="plantilla/template :: footer"></footer>
-
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 </body>
+
 </html>
